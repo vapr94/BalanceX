@@ -2,6 +2,10 @@
 
 import streamlit as st
 
+st.set_page_title("Balanced Parantheses Test")
+st.header("Balanced Parantheses Test")
+
+
 
 def generateParenthesis(left, right, parantheses_string, output):
 	if left == 0 and right == 0:
@@ -63,10 +67,24 @@ def fn_choose_prob(temprature,count_open,count_close):
   return draw
 
 
-total_length = 6
+
+
+temprature = st.number_input("Enter the temperature as a probability value (between 0.0 and 1.0):", value=0.5, step=0.1, min_value=0.0, max_value=1.0)
+start_string = st.text_input("Enter the substring to start with:", "")
+total_length = st.number_input("Enter the length of the corpus as an integer:", value=50, step=1)
+
+
+
+
+# start_string='(('
+# Higher temperatures result in more diverse and unpredictable output
+# temprature=0.8
+
+# total_length = 6
 initial_corpus = []
 
 print("total_length",total_length)
+st.write("total_length",total_length)
 total_length=total_length +1
 
 for n in range(1,total_length):
@@ -76,14 +94,11 @@ for n in range(1,total_length):
     generateParenthesis(n/2, n/2, parantheses_string, initial_corpus)
 # Now, here we print out all the combinations.
 print(f"Initial Corpus={initial_corpus}")
-for k in initial_corpus:
-	print(k)
+st.write(f"Initial Corpus={initial_corpus}")
+# for k in initial_corpus:
+# 	print(k)
 
-
-start_string='(('
-# Higher temperatures result in more diverse and unpredictable output
-temprature=0.8
-print(f"Initial Corpus={initial_corpus}")
+# print(f"Initial Corpus={initial_corpus}")
 matched_str=fn_find_string(start_string,initial_corpus)
 if len(matched_str)>0:
   #count number of open and closed parantheses that are correct in corpus
