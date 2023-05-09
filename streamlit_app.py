@@ -1,8 +1,11 @@
 
 
 import streamlit as st
+import streamlit as st
 
-st.set_page_title("Balanced Parantheses Test")
+# st.set_page_config(
+#         page_title="My Page Title",
+# )
 st.header("Balanced Parantheses Test")
 
 
