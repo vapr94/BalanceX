@@ -80,55 +80,56 @@ total_length = st.number_input("Enter the length of the corpus as an integer:", 
 # start_string='(('
 # Higher temperatures result in more diverse and unpredictable output
 # temprature=0.8
+if st.button('Submit'):
 
 # total_length = 6
-initial_corpus = []
+  initial_corpus = []
 
-print("total_length",total_length)
-# st.write("Corpus Length=",total_length)
-total_length=total_length +1
+  print("total_length",total_length)
+  # st.write("Corpus Length=",total_length)
+  total_length=total_length +1
 
-for n in range(1,total_length):
-  parantheses_string = ""
-  # print("n",n)
-  if n%2==0:
-    generateParenthesis(n/2, n/2, parantheses_string, initial_corpus)
-# Now, here we print out all the combinations.
-print(f"Initial Corpus={initial_corpus}")
-st.write(f"Initial Corpus={initial_corpus}")
-# for k in initial_corpus:
-# 	print(k)
+  for n in range(1,total_length):
+    parantheses_string = ""
+    # print("n",n)
+    if n%2==0:
+      generateParenthesis(n/2, n/2, parantheses_string, initial_corpus)
+  # Now, here we print out all the combinations.
+  print(f"Initial Corpus={initial_corpus}")
+  st.write(f"Initial Corpus={initial_corpus}")
+  # for k in initial_corpus:
+  # 	print(k)
 
-# print(f"Initial Corpus={initial_corpus}")
-matched_str=fn_find_string(start_string,initial_corpus)
-if len(matched_str)>0:
-  st.write(f"Matched Strings from Corpus {matched_str}")
-  #count number of open and closed parantheses that are correct in corpus
-  count_open,count_close=fn_count_parantheses(matched_str,start_string)
-  print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
-  st.write(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
-
-  #Choose parantheses based on temprature
-  str_drawn=fn_choose_prob(temprature,count_open,count_close)
-  while len(matched_str)>0:
-    print("*"*80)
-    corpus=matched_str.copy()
-    print(f"Corpus={corpus}")
-    st.write(f"Corpus={corpus}")
-    print(f"Parantheses which has been choosen ={str_drawn[0]}")
-    st.write(f"Parantheses which has been choosen ={str_drawn[0]}")
-    start_string=start_string+str_drawn[0]
-    matched_str=fn_find_string(start_string,corpus)
+  # print(f"Initial Corpus={initial_corpus}")
+  matched_str=fn_find_string(start_string,initial_corpus)
+  if len(matched_str)>0:
+    st.write(f"Matched Strings from Corpus {matched_str}")
+    #count number of open and closed parantheses that are correct in corpus
     count_open,count_close=fn_count_parantheses(matched_str,start_string)
     print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
     st.write(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
 
+    #Choose parantheses based on temprature
     str_drawn=fn_choose_prob(temprature,count_open,count_close)
+    while len(matched_str)>0:
+      print("*"*80)
+      corpus=matched_str.copy()
+      print(f"Corpus={corpus}")
+      st.write(f"Corpus={corpus}")
+      print(f"Parantheses which has been choosen ={str_drawn[0]}")
+      st.write(f"Parantheses which has been choosen ={str_drawn[0]}")
+      start_string=start_string+str_drawn[0]
+      matched_str=fn_find_string(start_string,corpus)
+      count_open,count_close=fn_count_parantheses(matched_str,start_string)
+      print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
+      st.write(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
 
-  st.write("Can't find any matching string")
-  print(f"Failed to find any matching")
+      str_drawn=fn_choose_prob(temprature,count_open,count_close)
 
-else:
-  st.write("Can't find any matching string")
-  print(f"Failed to find any matching")
+    st.write("Can't find any matching string")
+    print(f"Failed to find any matching")
+
+  else:
+    st.write("Can't find any matching string")
+    print(f"Failed to find any matching")
 
