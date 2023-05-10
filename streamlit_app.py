@@ -74,7 +74,7 @@ def fn_choose_prob(temprature,count_open,count_close):
 
 temprature = st.number_input("Enter the temperature as a probability value (between 0.0 and 1.0):", value=0.5, step=0.1, min_value=0.0, max_value=1.0)
 start_string = st.text_input("Enter the substring to start with:", "")
-total_length = st.number_input("Enter the length of the corpus as an integer:", value=6, step=1)
+total_length = st.number_input("Enter the length of the corpus as an integer:", value=8, step=1)
 
 
 # start_string='(('
