@@ -116,7 +116,7 @@ if st.button('Submit'):
       st.write("---")
       corpus=matched_str.copy()
       print(f"Corpus={corpus} ")
-      st.markdown(f"Corpus= **{corpus}, count= **{len(matched_str)}**")
+      st.markdown(f"Corpus= **{corpus}**, count= **{len(matched_str)}**")
       print(f"Parantheses which has been choosen ={str_drawn[0]}")
       st.markdown(f"Parantheses which has been choosen = **{str_drawn[0]}**")
       start_string=start_string+str_drawn[0]
