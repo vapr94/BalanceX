@@ -103,7 +103,7 @@ if st.button('Submit'):
   # print(f"Initial Corpus={initial_corpus}")
   matched_str=fn_find_string(start_string,initial_corpus)
   if len(matched_str)>0:
-    st.markdown(f"Matched Strings from Corpus **{matched_str}**")
+    st.markdown(f"Matched Strings from Corpus = **{matched_str}**")
     #count number of open and closed parantheses that are correct in corpus
     count_open,count_close=fn_count_parantheses(matched_str,start_string)
     print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
@@ -116,14 +116,14 @@ if st.button('Submit'):
       st.write("---")
       corpus=matched_str.copy()
       print(f"Corpus={corpus}")
-      st.markdown(f"Corpus=**{corpus}**")
+      st.markdown(f"Corpus= **{corpus}**")
       print(f"Parantheses which has been choosen ={str_drawn[0]}")
       st.markdown(f"Parantheses which has been choosen = **{str_drawn[0]}**")
       start_string=start_string+str_drawn[0]
       matched_str=fn_find_string(start_string,corpus)
       count_open,count_close=fn_count_parantheses(matched_str,start_string)
       print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
-      st.wmarkdown(f"Open Parantheses Count= **{count_open}** , Close Paranthese Count=**{count_close}**")
+      st.markdown(f"Open Parantheses Count= **{count_open}** , Close Paranthese Count=**{count_close}**")
 
       str_drawn=fn_choose_prob(temprature,count_open,count_close)
 
