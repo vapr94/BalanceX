@@ -96,7 +96,7 @@ if st.button('Submit'):
       generateParenthesis(n/2, n/2, parantheses_string, initial_corpus)
   # Now, here we print out all the combinations.
   print(f"Initial Corpus={initial_corpus}")
-  st.markdown(f"Initial Corpus=**{initial_corpus}**, count= **{len(initial_corpus)}")
+  st.markdown(f"Initial Corpus=**{initial_corpus}**, count= **{len(initial_corpus)}**")
   # for k in initial_corpus:
   # 	print(k)
 
