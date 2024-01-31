@@ -111,6 +111,21 @@ if st.button('Submit'):
 
     #Choose parantheses based on temprature
     str_drawn=fn_choose_prob(temprature,count_open,count_close)
+    while len(matched_str)>0:
+      print("*"*80)
+      st.write("---")
+      corpus=matched_str.copy()
+      print(f"Corpus={corpus} ")
+      st.markdown(f"Corpus= **{corpus}**, count= **{len(matched_str)}**")
+      print(f"Parantheses which has been choosen ={str_drawn[0]}")
+      st.markdown(f"Parantheses which has been choosen = **{str_drawn[0]}**")
+      start_string=start_string+str_drawn[0]
+      matched_str=fn_find_string(start_string,corpus)
+      count_open,count_close=fn_count_parantheses(matched_str,start_string)
+      print(f"Open Parantheses Count={count_open}, Close Paranthese Count={count_close}")
+      st.markdown(f"Open Parantheses Count= **{count_open}** , Close Paranthese Count=**{count_close}**")
+
+      str_drawn=fn_choose_prob(temprature,count_open,count_close)
     
   else:
     st.write("Can't find any matching string")
